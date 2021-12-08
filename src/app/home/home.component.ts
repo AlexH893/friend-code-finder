@@ -13,6 +13,8 @@ import { HttpClient } from '@angular/common/http';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 import {
   FormBuilder,
   FormGroup,
@@ -36,7 +38,11 @@ export class HomeComponent implements OnInit {
   //code = new FormControl('');
   codes = new MatTableDataSource<Code>([]);
   displayedColumns: string[] = ['code'];
-  constructor(private http: HttpClient, private fb: FormBuilder) {}
+  constructor(
+    private http: HttpClient,
+    private fb: FormBuilder,
+    private snackBar: MatSnackBar
+  ) {}
 
   fetchCodes(): void {
     this.http
@@ -70,5 +76,13 @@ export class HomeComponent implements OnInit {
       .subscribe((res) => {
         alert('code success');
       });
+  }
+
+  showSnackbar(content, action, duration) {
+    this.snackBar.open(content, action, {
+      duration: 1000,
+      verticalPosition: 'top', // Allowed values are  'top' | 'bottom'
+      horizontalPosition: 'center', // Allowed values are 'start' | 'center' | 'end' | 'left' | 'right'
+    });
   }
 }
