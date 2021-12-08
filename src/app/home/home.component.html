@@ -4,8 +4,10 @@
 
 <label for="inputtedCode">Friend Code: </label>
 <mat-form-field [formGroup]="codeForm">
-  <input matInput  type="text" [formControl]="codeForm.controls['code']" />
-  <button (click)="submitCode()">Submit Code</button>
+  <input matInput type="text" [formControl]="codeForm.controls['code']" />
+  <button (click)="submitCode()" [disabled]="codeForm.invalid">
+    Submit Code
+  </button>
 </mat-form-field>
 
 <!-- Code Column -->

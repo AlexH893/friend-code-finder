@@ -50,7 +50,13 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.fetchCodes();
     this.codeForm = this.fb.group({
-      code: [null, Validators.compose([Validators.required])],
+      code: [
+        null,
+        Validators.compose([
+          Validators.required,
+          Validators.pattern('^\\d{12}$'), //Allows for only 12 digits
+        ]),
+      ],
     });
   }
 
