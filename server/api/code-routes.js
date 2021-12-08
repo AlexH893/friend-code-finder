@@ -40,6 +40,7 @@ router.post("/codes", async (req, res) => {
     // The password to be hashed
     const newCode = {
       code: req.body.code,
+      date: req.body.date,
     };
 
     await Code.create(newCode, function (err, code) {
@@ -52,7 +53,10 @@ router.post("/codes", async (req, res) => {
         console.log(code);
         res.json(code);
         console.log(
-          "A new code has been added! They're code is " + req.body.code
+          "A new code has been added! They're code is " +
+            req.body.code +
+            ", it was submitted at " +
+            req.body.date
         );
       }
     });
