@@ -16,7 +16,7 @@
   <ng-container matColumnDef="code">
     <th mat-header-cell *matHeaderCellDef>Recently submitted friend codes</th>
     <td mat-cell *matCellDef="let code" [value]="code">
-      {{ code.code }}
+      {{ code.code }} <a class = "date">{{ code.date }}</a>
       <a
         type="button"
         class="copyBtn"
