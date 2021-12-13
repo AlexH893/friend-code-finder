@@ -14,7 +14,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { MomentModule } from 'ngx-moment';
 import {
   FormBuilder,
   FormGroup,
@@ -75,6 +75,7 @@ export class HomeComponent implements OnInit {
       })
       .subscribe((res) => {
         alert('code success');
+        window.location.reload(); // Will update to async pipe later
       });
   }
 

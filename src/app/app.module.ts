@@ -13,7 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { MomentModule } from 'ngx-moment';
 @NgModule({
   declarations: [AppComponent, HomeComponent, BaseLayoutComponent],
   imports: [
@@ -28,6 +28,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatInputModule,
     ClipboardModule,
     MatSnackBarModule,
+    MomentModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
