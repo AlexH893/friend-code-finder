@@ -16,7 +16,8 @@
   <ng-container matColumnDef="code">
     <th mat-header-cell *matHeaderCellDef>Recently submitted friend codes</th>
     <td mat-cell *matCellDef="let code" [value]="code">
-      {{ code.code }} <a class="date">{{ code.createdAt  }}</a>
+      {{ code.code }} <a class="date">{{ code.createdAt }}</a>
+
       <a
         type="button"
         class="copyBtn"
@@ -33,3 +34,8 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
+<mat-paginator
+  [pageSizeOptions]="[10, 20, 50, 100]"
+  aria-label="Select page of users"
+  style="margin-top: 3rem"
+></mat-paginator>

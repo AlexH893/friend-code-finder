@@ -14,6 +14,8 @@ import { MatInputModule } from '@angular/material/input';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MomentModule } from 'ngx-moment';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 @NgModule({
   declarations: [AppComponent, HomeComponent, BaseLayoutComponent],
   imports: [
@@ -29,6 +31,7 @@ import { MomentModule } from 'ngx-moment';
     ClipboardModule,
     MatSnackBarModule,
     MomentModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

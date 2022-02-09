@@ -5,11 +5,14 @@
  *  https://stackblitz.com/run?file=src%2Fapp%2Fname-editor%2Fname-editor.component.html
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Code } from '../shared/models/code.interface';
 import { Observable } from 'rxjs';
 import { CodeService } from '../shared/models/services/code.service';
 import { HttpClient } from '@angular/common/http';
+
+import { MatPaginator } from '@angular/material/paginator';
+
 import { MatTableDataSource } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -36,7 +39,9 @@ export class HomeComponent implements OnInit {
   //form: FormGroup;
   errorMsg: string;
   //code = new FormControl('');
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   codes = new MatTableDataSource<Code>([]);
+
   displayedColumns: string[] = ['code'];
   constructor(
     private http: HttpClient,
@@ -44,6 +49,9 @@ export class HomeComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {}
 
+  /*
+   * Method to retrieve codes with API call
+   */
   fetchCodes(): void {
     this.http
       .get('http://localhost:3000/api/codes')
@@ -64,6 +72,19 @@ export class HomeComponent implements OnInit {
         ]),
       ],
     });
+  }
+
+  ngAfterViewInit() {
+    this.codes.paginator = this.paginator;
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.codes.filter = filterValue.trim().toLowerCase();
+
+    if (this.codes.paginator) {
+      this.codes.paginator.firstPage();
+    }
   }
 
   submitCode() {
