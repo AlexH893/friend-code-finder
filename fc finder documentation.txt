@@ -1,0 +1,14 @@
+FC Finder
+
+************************************
+*MongoDB, Angular, Express, Node.js*
+************************************
+
+add codes to db to display
+delete after 24hrs
+
+
+testing
+
+selenium - regression testing
+https://locust.io/ - load testing
