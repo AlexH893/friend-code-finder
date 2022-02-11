@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node ./server/app.js",
+    "start": "node ./server/app",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "localhost": "ng build && node ./server/app.js"
+    "localhost": "ng build && node ./server/app"
   },
   "private": true,
   "dependencies": {
