@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node ./server/app",
+    "start": "node ./server/app.js",
+    "server": "nodemon ./server/app.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "localhost": "ng build && node ./server/app"
+    "localhost": "ng build && node ./server/app.js"
   },
   "private": true,
   "dependencies": {
@@ -28,6 +29,7 @@
     "morgan": "^1.10.0",
     "ngx-moment": "^5.0.0",
     "node": "^16.13.1",
+    "nodemon": "^2.0.15",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
