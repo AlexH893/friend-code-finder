@@ -16,7 +16,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const mongoose = require("mongoose");
 const createError = require("http-errors");
-const Router = express.Router();
+const { Router } = require("express");
 let codeRoutes = require("./api/code-routes.js");
 var cors = require("cors");
 
