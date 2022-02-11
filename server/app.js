@@ -30,7 +30,6 @@ app.use(cors());
 /**
  * Variables
  */
-const port = 3000; // server port
 
 const conn =
   "mongodb+srv://admin:admin@buwebdev-cluster-1.8auop.mongodb.net/pogo?retryWrites=true&w=majority";
@@ -59,13 +58,11 @@ app.use("/api", codeRoutes);
 
 /**
  * Create and start server
- */
+
 http.createServer(app).listen(port, function () {
   console.log(`Application started and listening on port: ${port}`);
-}); // end http create server function
+}); */
 
-/*
 app.listen(process.env.PORT || 3000, function () {
   console.log("Application is running at localhost:" + app.get("port"));
 });
-*/
