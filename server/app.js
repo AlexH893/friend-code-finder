@@ -37,14 +37,14 @@ app.use(
  * Variables
  */
 
-const conn =
+const MONGODB_URI =
   "mongodb+srv://admin:admin@buwebdev-cluster-1.8auop.mongodb.net/pogo?retryWrites=true&w=majority";
 
 /**
  * Database connection
  */
 mongoose
-  .connect(conn, {
+  .connect(MONGODB_URI, {
     promiseLibrary: require("bluebird"),
     useUnifiedTopology: true,
     useNewUrlParser: true,
