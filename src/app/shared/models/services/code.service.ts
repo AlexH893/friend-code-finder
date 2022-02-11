@@ -9,11 +9,12 @@ export class CodeService {
   constructor(private http: HttpClient) {}
 
   fetchCodes() {
-    return this.http.get('http://localhost:3000/api/codes/');
+    return this.http.get('/api/codes/'); //http://localhost:3000/api/codes/
   }
 
   createCode(code: string): Observable<any> {
-    return this.http.post('http://localhost:3000/api/codes/', {
+    return this.http.post('/api/codes/', {
+      //http://localhost:3000/api/codes/
       code: code,
     });
   }
