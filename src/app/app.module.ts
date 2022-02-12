@@ -15,7 +15,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MomentModule } from 'ngx-moment';
 import { MatPaginatorModule } from '@angular/material/paginator';
-
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 @NgModule({
   declarations: [AppComponent, HomeComponent, BaseLayoutComponent],
   imports: [
@@ -32,6 +32,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatSnackBarModule,
     MomentModule,
     MatPaginatorModule,
+    MatSlideToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

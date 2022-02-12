@@ -1,16 +1,33 @@
-<div style="text-align: center">Pokemon GO friend codes</div>
+<div style="text-align: center"><h1>Pokémon Go Friend Codes</h1></div>
+<p style="width: 30vw; margin: 0 auto">
+  Welcome, here you can enter you Pokémon Go Friend Code so people can add you
+  from all over the world! Simply enter your code for others to see and copy
+  codes to add in Pokémon Go. Return the next day to submit your code again to
+  bump it to the top! Codes are automatically deleted in 24HR intervals.
+</p>
 
 <br />
 <div class="center">
   <label for="inputtedCode">Friend Code: </label>
   <mat-form-field [formGroup]="codeForm">
-    <input matInput type="text" [formControl]="codeForm.controls['code']" />
+    <input
+      matInput
+      type="text"
+      [formControl]="codeForm.controls['code']"
+      class="input"
+      autofocus
+      autocomplete="off"
+      id="codeInput"
+    />
   </mat-form-field>
-  <button (click)="submitCode()" [disabled]="codeForm.invalid">
+
+  <button (click)="submitCode()" [disabled]="codeForm.invalid" id="submitBtn">
     Submit Code
   </button>
+  <br />
+  <mat-slide-toggle> Toggle QR Codes - Coming soon!</mat-slide-toggle>
 </div>
-
+<br />
 <!-- Code Column -->
 <table mat-table [dataSource]="codes" class="mat-elevation-z8 center2">
   <ng-container matColumnDef="code">
@@ -37,5 +54,5 @@
 <mat-paginator
   [pageSizeOptions]="[10, 20, 50, 100]"
   aria-label="Select page of users"
-  style="width: 30vw; margin: 0 auto"
+  style="width: 25vw; margin: 0 auto"
 ></mat-paginator>

@@ -33,6 +33,12 @@ a.copyBtn {
 * Styling for date
 */
 a.date {
-  font-size: .7em;
+  font-size: 0.7em;
   margin-left: 20px;
+}
+
+.input {
+  /*background-color: rgb(221, 221, 221);*/
+  color: black;
+  border: 1px solid black;
 }

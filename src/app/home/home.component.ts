@@ -53,10 +53,12 @@ export class HomeComponent implements OnInit {
    * Method to retrieve codes with API call
    */
   fetchCodes(): void {
-    this.http.get('/api/codes').subscribe((res: Code[]) => {
-      this.codes.data = res;
-      console.log(this.codes.data);
-    });
+    this.http
+      .get('http://localhost:3000/api/codes')
+      .subscribe((res: Code[]) => {
+        this.codes.data = res;
+        console.log(this.codes.data);
+      });
   }
 
   ngOnInit(): void {
@@ -89,8 +91,8 @@ export class HomeComponent implements OnInit {
     const codeInput = this.codeForm.value;
 
     this.http
-      .post('/api/codes', {
-        //http://localhost:3000/api/codes
+      .post('http://localhost:3000/api/codes', {
+        // this fixed heroku error, change back to /api/codes for prod
         code: codeInput.code,
       })
       .subscribe((res) => {
