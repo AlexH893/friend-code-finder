@@ -10,6 +10,7 @@
  */
 
 const express = require("express");
+var compression = require("compression");
 const http = require("http");
 var cors = require("cors");
 const morgan = require("morgan");
@@ -58,7 +59,7 @@ mongoose
  */
 
 app.use("/api", codeRoutes);
-
+app.use(compression());
 /**
  * Create and start server
 
