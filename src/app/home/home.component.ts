@@ -26,6 +26,7 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -49,8 +50,22 @@ export class HomeComponent implements OnInit {
     private http: HttpClient,
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
-    //public dialog: MatDialogModule
-  ) {}
+    private meta: Meta,
+    private title: Title //public dialog: MatDialogModule
+  ) {
+    this.meta.addTags([
+      { name: 'description', content: 'Home page of Pokemon Go Friend Codes' },
+      { name: 'author', content: 'stillworld' },
+      {
+        name: 'keywords',
+        content: 'Pokemon, Pokemon Go Friend Codes, Pogo friend codes',
+      },
+    ]);
+    this.setTitle('Pokémon Go Friend Codes');
+  }
+  public setTitle(newTitle: string) {
+    this.title.setTitle(newTitle);
+  }
 
   /*
    * Method to retrieve codes with API call
@@ -111,7 +126,7 @@ export class HomeComponent implements OnInit {
       horizontalPosition: 'center', // Allowed values are 'start' | 'center' | 'end' | 'left' | 'right'
     });
   }
-/*
+  /*
   openDialog(): void {
     const dialogRef = this.dialog.open(TutDialogComponent, {
       width: '250px',
