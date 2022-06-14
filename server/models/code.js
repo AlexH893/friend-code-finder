@@ -18,6 +18,8 @@ let codeSchema = new Schema(
   {
     code: { type: String },
     createdAt: { type: String, default: createdAt },
+    modified: { type: Date, default: createdAt },
+
     /* shows current day but no time default: d.toDateString()
      default: d.toString() displays full date and time with timezone  */
   },
