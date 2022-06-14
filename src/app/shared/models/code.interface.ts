@@ -7,4 +7,5 @@
 
 export interface Code {
   code: string;
+  modified: Date;
 }

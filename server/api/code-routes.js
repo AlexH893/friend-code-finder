@@ -37,10 +37,11 @@ router.get("/codes", async (req, res) => {
  */
 router.post("/codes", async (req, res) => {
   try {
-    // The password to be hashed
+    // The code to be submitted
     const newCode = {
       code: req.body.code,
       date: req.body.date,
+      modified: req.body.date,
     };
 
     await Code.create(newCode, function (err, code) {

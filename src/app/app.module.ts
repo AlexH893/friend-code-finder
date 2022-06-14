@@ -16,8 +16,19 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MomentModule } from 'ngx-moment';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {
+  MatDialogModule,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
+import { TutDialogComponent } from './tut-dialog/tut-dialog.component';
 @NgModule({
-  declarations: [AppComponent, HomeComponent, BaseLayoutComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    BaseLayoutComponent,
+    TutDialogComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -33,6 +44,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MomentModule,
     MatPaginatorModule,
     MatSlideToggleModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
