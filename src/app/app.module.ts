@@ -30,7 +30,7 @@ import { TutDialogComponent } from './tut-dialog/tut-dialog.component';
     TutDialogComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
