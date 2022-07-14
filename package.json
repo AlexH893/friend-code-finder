@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node ./server/app.js",
+    "start": "node ./server/app.js --proxy-config proxy.conf.json",
     "server": "nodemon ./server/app.js",
     "build": "ng build --prod",
     "watch": "ng build --watch --configuration development",
@@ -11,7 +11,7 @@
     "localhost": "ng build && node ./server/app.js",
     "preprotractor": "webdriver-manager update",
     "protractor": "protractor ./e2e/protractor.conf.js",
-    "dev:ssr": "ng run gofriendcodes:serve-ssr",
+    "dev:ssr": "ng run gofriendcodes:serve-ssr ",
     "serve:ssr": "node dist/gofriendcodes/server/main.js",
     "build:ssr": "ng build && ng run gofriendcodes:server",
     "prerender": "ng run gofriendcodes:prerender"
