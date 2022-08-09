@@ -11,9 +11,7 @@ describe('BaseLayoutComponent', () => {
       declarations: [ BaseLayoutComponent ]
     })
     .compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(BaseLayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
