@@ -2,7 +2,7 @@
   "name": "test",
   "version": "0.0.0",
   "engines": {
-    "node": "14.15.4"
+    "node": "16.10.0"
   },
   "scripts": {
     "ng": "ng",
@@ -20,6 +20,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^14.0.0",
+    "@angular/cdk": "^14.1.1",
     "@angular/common": "^14.0.0",
     "@angular/compiler": "^14.0.0",
     "@angular/core": "^14.0.0",
