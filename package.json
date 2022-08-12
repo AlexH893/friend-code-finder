@@ -6,7 +6,7 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "npm run start",
+    "start": "npm run build:ssr",
     "server": "nodemon ./server/app.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
