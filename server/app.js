@@ -20,6 +20,7 @@
  const createError = require("http-errors");
  const { Router } = require("express");
  let codeRoutes = require("./api/code-routes.js");
+// Initialize Firebase
 
  /**
   * App configurations
