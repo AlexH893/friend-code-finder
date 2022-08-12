@@ -37,6 +37,7 @@
     "cors": "^2.8.5",
     "esbuild": "^0.15.1",
     "express": "^4.15.2",
+    "firebase": "^9.9.2",
     "http-errors": "^2.0.0",
     "jasmine": "^4.0.2",
     "moment": "^2.29.1",
