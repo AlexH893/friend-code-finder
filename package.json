@@ -8,7 +8,7 @@
     "ng": "ng",
     "start": "node ./server/app.js",
     "server": "nodemon ./server/app.js",
-    "build": "ng build --configuration production --aot",
+    "build": "ng build --configuration production --aot && node ./server/app.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "localhost": "ng build && node ./server/app.js",

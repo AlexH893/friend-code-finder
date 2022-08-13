@@ -1,9 +1,3 @@
-/*
- * Author: Alex Haefner
- * Date: 11.27.2021
- * Description: Contains app configurations
- * Sources:
- */
 
 /**
  * Require statements
@@ -25,13 +19,15 @@
  /**
   * App configurations
   */
+
  let app = express();
  app.use(bodyParser.json());
  app.use(bodyParser.urlencoded({ extended: true }));
  app.use(morgan("dev"));
  app.use(cors());
- app.use(express.static(path.join(__dirname, "../dist/test/server"))); //gofriendcodes is heroku app name, needs changed eventually
- app.use("/", express.static(path.join(__dirname, "../dist/test/browser")));
+ app.use(express.static(path.join(__dirname, "../dist/test/browser"))); //gofriendcodes is heroku app name, needs changed eventually
+ app.use("/", express.static(path.join(__dirname, "../dist/test/server")));
+
  /**
   * Variables
   */
@@ -42,6 +38,7 @@
  /**
   * Database connection
   */
+
  mongoose
    .connect(MONGODB_URI, {
      promiseLibrary: require("bluebird"),
@@ -61,12 +58,10 @@
 
  app.use("/api", codeRoutes);
  app.use(compression());
+
+
  /**
   * Create and start server
-
- http.createServer(app).listen(port, function () {
-   console.log(`Application started and listening on port: ${port}`);
- }); */
 
  app.listen(process.env.PORT || 3000, function () {
    console.log("Application is running at localhost:" + app.get("port"));
