@@ -30,8 +30,8 @@
  app.use(bodyParser.urlencoded({ extended: true }));
  app.use(morgan("dev"));
  app.use(cors());
- app.use(express.static(path.join(__dirname, "../dist/pogocodes"))); //gofriendcodes is heroku app name, needs changed eventually
- app.use("/", express.static(path.join(__dirname, "../dist/pogocodes")));
+ app.use(express.static(path.join(__dirname, "../dist/test"))); //gofriendcodes is heroku app name, needs changed eventually
+ app.use("/", express.static(path.join(__dirname, "../dist/test")));
  /**
   * Variables
   */
