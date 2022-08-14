@@ -30,11 +30,9 @@
  app.use(bodyParser.urlencoded({ extended: true }));
  app.use(morgan("dev"));
  app.use(cors());
- app.use(express.static(path.join(__dirname, "../dist/test/browser"))); //gofriendcodes is heroku app name, needs changed eventually
+ app.use(express.static(path.join(__dirname, "../dist/test/browser")));
  app.use("/", express.static(path.join(__dirname, "../dist/test")));
- /**
-  * Variables
-  */
+
 
  const MONGODB_URI =
    "mongodb+srv://admin:admin@buwebdev-cluster-1.8auop.mongodb.net/pogo?retryWrites=true&w=majority";
@@ -56,13 +54,11 @@
    }); // end mongoose connection
 
  /**
-  * API(s) go here
+  * API(s)
   */
 
  app.use("/api", codeRoutes);
  app.use(compression());
-
-
 
  app.listen(process.env.PORT || 3000, function () {
    console.log("Application is running at localhost:" + app.get("port"));

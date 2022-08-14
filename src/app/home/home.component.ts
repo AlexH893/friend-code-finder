@@ -91,7 +91,7 @@ export class HomeComponent implements OnInit {
     const codeInput = this.codeForm.value;
 
     this.http
-      .post('http://localhost:3000/api/codes', {
+      .post('${process.env.API_URL}/api/codes', {
         // this fixed heroku error, change back to /api/codes for prod
         code: codeInput.code,
       })
