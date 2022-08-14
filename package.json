@@ -6,7 +6,7 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "ng build --configuration production --aot && nmp run server",
+    "start": "ng build --configuration production --aot && npm run server",
     "server": "node ./server/app.js",
     "test": "ng test",
     "localhost": "ng build && node ./server/app.js",
