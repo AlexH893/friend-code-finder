@@ -6,7 +6,7 @@
   },
   "scripts": {
     "ng": "ng",
-    "build": "ng build --configuration production --aot && node ./server/app.js",
+    "start": "ng build --configuration production --aot && node ./server/app.js",
     "server": "nodemon ./server/app.js",
     "test": "ng test",
     "localhost": "ng build && node ./server/app.js",
