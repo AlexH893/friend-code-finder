@@ -17,7 +17,6 @@ import { MomentModule } from 'ngx-moment';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { RouterModule } from '@angular/router';
-
 import {
   MatDialogModule,
   MatDialogRef,
@@ -45,7 +44,7 @@ import {
     MatPaginatorModule,
     MatSlideToggleModule,
     MatDialogModule,
-    RouterModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent],
