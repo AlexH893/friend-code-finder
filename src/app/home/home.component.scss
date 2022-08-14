@@ -149,3 +149,11 @@
       cursor: help;
     }
   }
+
+  .tut {
+    text-decoration: none;
+    &:hover {
+      cursor: help;
+    }
+  }
+  a:visited { text-decoration: none; color:black; }
