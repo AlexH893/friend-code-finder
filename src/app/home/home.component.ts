@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
    */
   fetchCodes(): void {
     this.http
-      .get('pogocodes/api/codes')
+      .get('pogocodes.herokuapp.com/api/codes')
       .subscribe((res: Code[]) => {
         this.codes.data = res;
         console.log(this.codes.data);
