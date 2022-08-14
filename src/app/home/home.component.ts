@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
    */
   fetchCodes(): void {
     this.http
-      .get('http://localhost:3000/api/codes')
+      .get('${process.env.API_URL}/api/codes')
       .subscribe((res: Code[]) => {
         this.codes.data = res;
         console.log(this.codes.data);
