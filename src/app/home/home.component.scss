@@ -157,3 +157,13 @@
     }
   }
   a:visited { text-decoration: none; color:black; }
+
+
+  @media (max-width: 1062px) {
+    .input__label {
+      visibility: hidden;
+  }
+  #submitBtn {
+    margin-right: 3em;
+  } }
+
