@@ -68,7 +68,7 @@ export class HomeComponent implements OnInit {
         null,
         Validators.compose([
           Validators.required,
-          Validators.pattern('^\\d{12}$'), //Allows for only 12 digits
+          Validators.pattern('^\\d{4}\\s\\d{4}\\s\\d{4}$'), //Allows for only 12 digits
         ]),
       ],
     });
@@ -89,9 +89,8 @@ export class HomeComponent implements OnInit {
 
   submitCode() {
     const codeInput = this.codeForm.value;
-
     this.http
-      .post('/api/codes', {
+      .post('000/api/codes', {
         // this fixed heroku error, change back to /api/codes for prod
         code: codeInput.code,
       })
