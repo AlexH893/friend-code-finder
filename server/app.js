@@ -29,7 +29,6 @@
  app.use(bodyParser.json());
  app.use(bodyParser.urlencoded({ extended: true }));
  app.use(morgan("dev"));
-
  app.use(express.static(path.join(__dirname, "../dist/test/browser")));
  app.use("/", express.static(path.join(__dirname, "../dist/test")));
  app.use(cors());
