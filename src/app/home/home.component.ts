@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
    */
   fetchCodes(): void {
     this.http
-      .get('/api/codes')
+      .get('/api/codes') //prod - '/api/codes'
       .subscribe((res: Code[]) => {
         this.codes.data = res;
         console.log(this.codes.data);
