@@ -8,7 +8,7 @@
 /**
  * Require statements
  */
-
+ require("dotenv").config({ path: "../db.env" });
  const express = require("express");
  var compression = require("compression");
  const http = require("http");
@@ -33,8 +33,7 @@
  app.use("/", express.static(path.join(__dirname, "../dist/test")));
  app.use(cors());
 
- const MONGODB_URI =
-   "mongodb+srv://admin:admin@buwebdev-cluster-1.8auop.mongodb.net/pogo?retryWrites=true&w=majority";
+ const MONGODB_URI = process.env.DBCON;
 
  /**
   * Database connection

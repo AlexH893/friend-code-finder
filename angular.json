@@ -55,6 +55,27 @@
               ],
               "outputHashing": "all"
             },
+            "staging": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "4mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.staging.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -71,6 +92,9 @@
           "configurations": {
             "production": {
               "browserTarget": "test:build:production"
+            },
+            "staging": {
+              "browserTarget": "test:build:staging"
             },
             "development": {
               "browserTarget": "test:build:development"
@@ -123,6 +147,15 @@
                 }
               ]
             },
+            "staging": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.staging.ts"
+                }
+              ]
+            },
             "development": {
               "optimization": false,
               "sourceMap": true,
@@ -137,6 +170,10 @@
             "development": {
               "browserTarget": "test:build:development",
               "serverTarget": "test:server:development"
+            },
+            "staging": {
+              "browserTarget": "test:build:staging",
+              "serverTarget": "test:server:staging"
             },
             "production": {
               "browserTarget": "test:build:production",
@@ -156,6 +193,10 @@
             "production": {
               "browserTarget": "test:build:production",
               "serverTarget": "test:server:production"
+            },
+            "staging": {
+              "browserTarget": "test:build:staging",
+              "serverTarget": "test:server:staging"
             },
             "development": {
               "browserTarget": "test:build:development",
