@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
    */
   fetchCodes(): void {
     this.http
-      .get('/api/codes') //prod - '/api/codes'
+      .get('http://localhost:3000/api/codes') //prod - '/api/codes'
       .subscribe((res: Code[]) => {
         this.codes.data = res;
         console.log(this.codes.data);
@@ -90,7 +90,7 @@ export class HomeComponent implements OnInit {
   submitCode() {
     const codeInput = this.codeForm.value;
     this.http
-      .post('000/api/codes', {
+      .post('http://localhost:3000/api/codes', {
         // this fixed heroku error, change back to /api/codes for prod
         code: codeInput.code,
       })
