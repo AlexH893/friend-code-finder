@@ -22,11 +22,13 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
+import { CodeFormatDirective } from './home/code-format.directive';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     BaseLayoutComponent,
+    CodeFormatDirective,
   ],
   imports: [
     BrowserModule,
