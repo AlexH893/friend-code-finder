@@ -14,16 +14,18 @@
       Welcome, here you can enter you Pokémon Go Friend Code so people can add
       you from all over the world! Simply submit your code and copy codes to add
       in Pokémon Go. Codes can be bumped every 24hrs. <br>
-      <span style="font-size: .7em;">Friend code format: #### #### ####</span>
+
     </p>
 
     <br />
 
-    <mat-form-field [formGroup]="codeForm">
+    <mat-form-field [formGroup]="codeForm" >
       <label class="input">
         <input
           matInput
           type="text"
+          code-mask
+          [formControlName]=""
           [formControl]="codeForm.controls['code']"
           class="input__field"
           autofocus
