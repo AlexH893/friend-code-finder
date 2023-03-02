@@ -17,12 +17,17 @@ import { MomentModule } from 'ngx-moment';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { RouterModule } from '@angular/router';
+import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 import {
   MatDialogModule,
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { CodeFormatDirective } from './home/code-format.directive';
+import { RegionsService } from '../services/regions.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,9 +51,11 @@ import { CodeFormatDirective } from './home/code-format.directive';
     MatPaginatorModule,
     MatSlideToggleModule,
     MatDialogModule,
-    RouterModule
+    RouterModule,
+    MatSelectModule,
+    MatAutocompleteModule,
   ],
-  providers: [],
+  providers: [RegionsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
