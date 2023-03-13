@@ -21,7 +21,7 @@ router.get("/codes", async (req, res) => {
         console.log(codes);
         res.json(codes);
       }
-    });
+    }).sort({ createdAt: -1 });
   } catch (e) {
     console.log(e);
     res.status(500).send({
@@ -35,7 +35,7 @@ router.post("/codes", async (req, res) => {
   try {
     // The code to be submitted
     const newCode = {
-      code: req.body.code,
+      code: req.body.code.replace(/\s/g, ""),
       date: req.body.date,
       modified: req.body.date,
       name: req.body.name,
@@ -45,8 +45,9 @@ router.post("/codes", async (req, res) => {
     await Code.create(newCode, function (err, code) {
       if (err) {
         console.log(err);
+
         res.status(501).send({
-          message: `MongoDB Exception: ${err}`,
+          message: `Duplicate code, codes will refresh every 24 hours`,
         });
       } else {
         console.log(code);

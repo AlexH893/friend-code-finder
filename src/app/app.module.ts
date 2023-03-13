@@ -9,7 +9,7 @@ import { BaseLayoutComponent } from './base-layout/base-layout.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -19,6 +19,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { RouterModule } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { QRCodeModule } from 'angularx-qrcode';
 
 import {
   MatDialogModule,
@@ -54,6 +55,8 @@ import { RegionsService } from '../services/regions.service';
     RouterModule,
     MatSelectModule,
     MatAutocompleteModule,
+    QRCodeModule,
+    FormsModule
   ],
   providers: [RegionsService],
   bootstrap: [AppComponent],
