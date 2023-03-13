@@ -1,169 +1,294 @@
-:root {
-    --color-light: white;
-    --color-dark: #212121;
-    --color-signal: #fab700;
+// https://gs.statcounter.com/screen-resolution-stats
 
-    --color-background: var(--color-light);
-    --color-text: var(--color-dark);
-    --color-accent: var(--color-signal);
+h1 {
+  font-size: 2em;
+}
 
-    --size-bezel: 0.5rem;
-    --size-radius: 4px;
+.center {
+  text-align: center;
+  width: 100%;
+}
+.center2 {
+  text-align: center;
+  margin: auto;
+  //width: 25%;
+}
 
-    line-height: 1.4;
-
-    font-family: "Inter", sans-serif;
-    font-size: calc(0.6rem + 0.4vw);
-    color: var(--color-text);
-    background: var(--color-background);
-    font-weight: 300;
-    padding: 0 calc(var(--size-bezel) * 3);
+@media all and (max-width: 30em) {
+  a.copyBtn {
+    display: block;
+    margin: 0.4em auto;
   }
+}
 
-  html {
-    background-color: #ffffff;
+a.date {
+  font-size: 0.7em;
+  margin-left: 20px;
+}
+
+p.blurb {
+  width: 30vw;
+  margin: 0 auto;
+  font-size: 1.3em;
+  @media (max-width: 428px) {
+    width: 75vw;
   }
-
-  .center {
-    text-align: center;
-    width: 100%;
+  @media (max-width: 768px) {
+    width: 75vw;
+    font-size: 1.2em;
   }
-  .center2 {
-    text-align: center;
-    margin: auto;
-    width: 25%;
+}
+
+#submitBtn {
+  cursor: pointer;
+  color: currentColor;
+  margin-bottom: 1.5em;
+  font-weight: 900;
+  width: 8em;
+  height: 3em;
+  &:hover {
+    background: #89aa8b;
   }
-
-  .card {
-    margin: auto;
-    width: 30%;
-    background: white;
-    padding: 2rem;
-    margin-top: 2rem;
-    border-radius: 4px;
-    border: 3px solid black;
-    box-shadow: 0.5rem 0.5rem 0 black;
-
-    @media (max-width: 428px) {
-      width: 75vw;
-    }
+  &:disabled {
+    cursor: not-allowed;
   }
-
-  @media all and (max-width: 30em) {
-    a.copyBtn {
-      display: block;
-      margin: 0.4em auto;
-    }
+  @media (max-width: 820px) {
+    width: 9em;
+    height: 4em;
   }
+}
 
-  /*
-  * Styling for date
-  */
+@media (max-width: 1062px) {
+  .input__label {
+    visibility: hidden;
+  }
+}
+
+.countries {
+  margin-top: 1em;
+}
+
+.region {
+  font-weight: bold;
+  border: 2px solid rgb(90, 141, 95);
+  box-sizing: border-box;
+}
+
+.mat-cell:hover {
+  color: #89aa8b;
+}
+
+#vivFilter {
+  margin-left: 2em;
+  margin-bottom: -0.5em;
+}
+
+#one {
+  width: 20px;
+  height: 20px;
+  padding-right: 1em;
+  margin-top: -0.5em;
+  opacity: 30%;
+  &:hover {
+    opacity: 90%;
+  }
+}
+#two {
+  width: 20px;
+  height: 20px;
+  padding-right: 1.05em;
+  margin-bottom: 1.5em;
+  opacity: 30%;
+  &:hover {
+    opacity: 90%;
+    cursor: help;
+  }
+}
+
+#three {
+  width: 20px;
+  height: 20px;
+  padding-right: 1.05em;
+  margin-bottom: 1.5em;
+  opacity: 30%;
+  &:hover {
+    opacity: 90%;
+  }
+}
+
+.codeTxt {
+  font-size: 1.2em;
+}
+
+// phones
+@media screen and (max-width: 375px) {
   a.date {
-    font-size: 0.7em;
-    margin-left: 20px;
+    font-size: 0.6em;
+    display: block;
   }
+}
 
-  .input {
+// tablets
+
+@media screen and (min-width: 850px) {
+  .codeTxt {
+    font-size: 1.5em;
+  }
+  a.date {
+    font-size: 1em;
+  }
+}
+
+.seoTxt {
+  text-align: center;
+  width: 50%;
+  margin: auto;
+}
+
+tr.mat-row,
+tr.mat-footer-row {
+  height: 6vh;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+
+  te.tooltip {
     position: relative;
-
-    &__label {
-      position: absolute;
-      left: 0;
-      top: 0;
-      padding: calc(var(--size-bezel) * 0.75) calc(var(--size-bezel) * 0.5);
-      margin: calc(var(--size-bezel) * 0.75 + 3px) calc(var(--size-bezel) * 0.5);
-      background: white;
-      white-space: nowrap;
-      transform: translate(0, 0);
-      transform-origin: 0 0;
-      background: var(--color-background);
-      transition: transform 120ms ease-in;
-      font-weight: bold;
-      line-height: 1.2;
-      font-size: 0.8rem;
-    }
-    &__field {
-      box-sizing: border-box;
-      display: block;
-      width: 100%;
-      border: 3px solid currentColor;
-      padding: calc(var(--size-bezel) * 1.5) var(--size-bezel);
-      color: currentColor;
-      background: transparent;
-      border-radius: var(--size-radius);
-
-      &:focus,
-      &:not(:placeholder-shown) {
-        & + .input__label {
-          transform: translate(0.25rem, -65%) scale(0.8);
-          color: var(--color-accent);
-        }
-      }
-    }
+    display: inline-block;
   }
 
-  p.blurb {
-    width: 30vw;
-    margin: 0 auto;
-    @media (max-width: 428px) {
-      width: 75vw;
-    }
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
   }
 
-  #submitBtn {
-    margin-left: 3em;
-    cursor: pointer;
-    color: currentColor;
-    padding: var(--size-bezel) calc(var(--size-bezel) * 2);
-    background: var(--color-accent);
-    border: 3px solid currentColor;
-    border-radius: var(--size-radius);
-    font-weight: 900;
-    margin-top: calc(var(--size-bezel) * 2.5);
-    &:hover {
-      background: #fab700;
-    }
-    &:disabled {
-      cursor: not-allowed;
-    }
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
   }
-  .th,
-  .code {
-    display: contents;
-    white-space: nowrap;
-  }
-  .mat-paginator {
-    display: contents;
-  }
+  text-decoration: none;
+}
 
-  .navbar-link {
-    cursor: pointer;
-    color: currentColor;
-    background: var(--color-accent);
-    border: 3px solid currentColor;
-    border-radius: var(--size-radius);
-    font-weight: 900;
-    &:hover {
-      background: #fab700;
-      cursor: help;
-    }
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+#filterTxt {
+  font-size: 0.8em;
+}
+
+/* SLIDER TOGGLE
+*/
+
+.switch {
+  position: relative;
+  display: inline-block;
+  margin-left: 16em;
+  width: 30px;
+  height: 17px;
+  @media (max-width: 768px) {
+    margin-left: 9.5em;
   }
+}
 
-  .tut {
-    text-decoration: none;
-    &:hover {
-      cursor: help;
-    }
-  }
-  a:visited { text-decoration: none; color:black; }
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
 
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
 
-  @media (max-width: 1062px) {
-    .input__label {
-      visibility: hidden;
-  }
-  #submitBtn {
-    margin-right: 3em;
-  } }
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
 
+input:checked + .slider {
+  background-color: #89aa8b;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #89aa8b;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.switchLabel {
+margin-left: -8.5em;
+}
+
+.qr {
+display: none;
+}
+
+// The clear filter 'button' that users press
+.clearBtn {
+  background: none;
+  border: none;
+}
+// The image that displays & represents the clear button
+#close {
+  height: 2em;
+  width: 2em;
+  cursor: pointer;
+  //margin-top: 1em;
+}
+
+#details {
+  display: inline-block;
+}

@@ -5,9 +5,7 @@
  * Sources:
  */
 
-export interface Code {
-  code: string;
-  modified: Date;
+export interface Regions {
   name: string;
   vivillion: string;
 }

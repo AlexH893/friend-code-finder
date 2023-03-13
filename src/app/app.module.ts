@@ -9,7 +9,7 @@ import { BaseLayoutComponent } from './base-layout/base-layout.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -17,12 +17,18 @@ import { MomentModule } from 'ngx-moment';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { RouterModule } from '@angular/router';
+import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { QRCodeModule } from 'angularx-qrcode';
+
 import {
   MatDialogModule,
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { CodeFormatDirective } from './home/code-format.directive';
+import { RegionsService } from '../services/regions.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,9 +52,13 @@ import { CodeFormatDirective } from './home/code-format.directive';
     MatPaginatorModule,
     MatSlideToggleModule,
     MatDialogModule,
-    RouterModule
+    RouterModule,
+    MatSelectModule,
+    MatAutocompleteModule,
+    QRCodeModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [RegionsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

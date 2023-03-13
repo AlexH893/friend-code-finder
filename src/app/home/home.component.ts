@@ -1,66 +1,69 @@
-/*
- * Author: Alex Haefner
- * Date: Dec 7, 2021
- * Descripton: TS file for Home
- *  https://stackblitz.com/run?file=src%2Fapp%2Fname-editor%2Fname-editor.component.html
- */
-
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Code } from '../shared/models/code.interface';
-import { Observable } from 'rxjs';
-import { CodeService } from '../shared/models/services/code.service';
-import { HttpClient } from '@angular/common/http';
+import { Regions } from '../shared/models/region.interface';
+import { Observable, Subscription } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MomentModule } from 'ngx-moment';
+import { map, startWith } from 'rxjs/operators';
+import { RegionsService } from '../../services/regions.service';
 import {
   FormBuilder,
   FormGroup,
-  FormArray,
   FormControl,
   Validators,
 } from '@angular/forms';
+
+// https://pokemongohub.net/post/guide/vivillon-guide/
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
+  errorMsg: string;
+  data: any;
+  error: any;
+  status: string;
+  private subs = new Subscription();
+  options: Regions[] = [];
+  filteredJSONDataOptions: Observable<any[]>;
+  regionForm = new FormControl();
+  filterForm = new FormControl();
   name: string;
+  toggled: boolean = false;
+
+  filterValue = '';
+
   codeForm = new FormGroup({
     code: new FormControl(),
   });
 
-  //form: FormGroup;
-  errorMsg: string;
-  //code = new FormControl('');
   @ViewChild(MatPaginator) paginator: MatPaginator;
   codes = new MatTableDataSource<Code>([]);
 
   displayedColumns: string[] = ['code'];
+  region: any;
   constructor(
     private http: HttpClient,
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
+    private regionsSv: RegionsService
   ) {}
 
-
-  /*
-   * Method to retrieve codes with API call
-   */
+  // GET codes api
   fetchCodes(): void {
     this.http
-      .get('/api/codes') //prod - '/api/codes'
+      .get('http://localhost:3000/api/codes') //prod - '/api/codes'
       .subscribe((res: Code[]) => {
         this.codes.data = res;
-        console.log(this.codes.data);
+        //console.log(this.codes.data);
       });
   }
 
+  // Runs when component is first loaded/initialized
   ngOnInit(): void {
     this.fetchCodes();
     this.codeForm = this.fb.group({
@@ -72,34 +75,47 @@ export class HomeComponent implements OnInit {
         ]),
       ],
     });
+
+    this.filteredJSONDataOptions = this.regionForm.valueChanges.pipe(
+      startWith(''),
+      map((value) => this.json_data_filter(value))
+    );
+
+    this.subs.add(
+      this.regionsSv.getRegions().subscribe(
+        (data) => {
+          this.options = data;
+        },
+
+        (err: HttpErrorResponse) => {
+          console.log(err);
+        }
+      )
+    );
+  }
+
+  ngOnDestroy(): void {
+    if (this.subs) {
+      this.subs.unsubscribe();
+    }
+  }
+
+  // JSON Data Filter for Regions select
+  private json_data_filter(value: string): string[] {
+    let newList = [];
+    this.options.forEach((element) => {
+      if (element.name.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
+        newList.push({ name: element.name, vivillion: element.vivillion });
+      }
+    });
+    return newList;
   }
 
   ngAfterViewInit() {
     this.codes.paginator = this.paginator;
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.codes.filter = filterValue.trim().toLowerCase();
-
-    if (this.codes.paginator) {
-      this.codes.paginator.firstPage();
-    }
-  }
-
-  submitCode() {
-    const codeInput = this.codeForm.value;
-    this.http
-      .post('/api/codes', {
-        // this fixed heroku error, change back to /api/codes for prod
-        code: codeInput.code,
-      })
-      .subscribe((res) => {
-        alert('code success');
-        window.location.reload(); // Will update to async pipe later
-      });
-  }
-
+  // Displays the toast when a user copies a code
   showSnackbar(content, action, duration) {
     this.snackBar.open(content, action, {
       duration: 1000,
@@ -108,6 +124,92 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.codes.filter = filterValue.trim().toLowerCase();
+    console.log("Filter applied")
+  }
+
+  clearFilter() {
+    console.log("clearing filter");
+    this.codes.filter = '';
+    this.filterValue = '';
+    this.toggleQr(this.toggled =!this.toggled);
+  }
 
 
+  // Submitting the form
+  submitCode() {
+    const codeInput = this.codeForm.value;
+    let regionInput = this.regionForm.value;
+    this.data = undefined;
+    this.error = undefined;
+    var isValid = false;
+
+    // Looping through each option
+    for (var i = 0; i < this.options.length; i++) {
+      //console.log(entries);
+      // Checking if region input matches any option name, stop looping if true
+      if (this.options[i].name === regionInput) {
+        isValid = true;
+        console.log('valid');
+        break;
+      }
+    }
+
+    // If true, submit form, else user receives error
+    if (isValid) {
+      this.http
+        .post('http://localhost:3000/api/codes', {
+          // this fixed heroku error, change back to /api/codes for prod
+          code: codeInput.code,
+          name: regionInput,
+          //vivillion: regionInput.
+        })
+        .subscribe((response: any) => {
+          alert('code success');
+          console.log('SUCCESS');
+          window.location.reload(); // Will update to async pipe later
+        });
+    } else {
+      alert('Region input invalid');
+    }
+  }
+
+  // QR Toggle
+  toggleQr(toggled) {
+    this.toggled = !this.toggled;
+    if (this.toggled == true) {
+      const elements = document.querySelectorAll<HTMLElement>('.qr');
+      const codes = document.querySelectorAll<HTMLElement>('#code');
+      const createdAtDates = document.querySelectorAll<HTMLElement>('#details');
+      // Displaying Qr codes
+      for (const e of elements) {
+        e.style.cssText = 'display:inline;padding-bottom: 3em;'; // cssText allows multiple JS css styles
+        for (const c of codes) {
+          c.style.cssText = 'font-size:.8em;';
+          for (const d of createdAtDates) {
+            d.style.cssText = 'margin-bottom:2em;';
+          }
+        }
+      }
+      console.log('Displaying QR codes');
+    } else if (this.toggled == false) {
+      const elements = document.querySelectorAll<HTMLElement>('.qr');
+      const codes = document.querySelectorAll<HTMLElement>('#code');
+      const createdAtDates = document.querySelectorAll<HTMLElement>('#details');
+
+      // Hiding Qr codes
+      for (const e of elements) {
+        e.style.display = 'none';
+        for (const c of codes) {
+          c.style.cssText = 'font-size:1.2em;';
+          for (const d of createdAtDates) {
+            d.style.cssText = 'display:inline;';
+          }
+        }
+      }
+      console.log('Hiding QR codes');
+    }
+  }
 }

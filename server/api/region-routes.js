@@ -6,22 +6,22 @@
  */
 var express = require("express");
 const router = express.Router();
-const Code = require("../models/code.js");
+const Region = require("../models/region.js");
 
-// GET all codes
-router.get("/codes", async (req, res) => {
+// GET all regions
+router.get("/regions", async (req, res) => {
   try {
-    Code.find({}, function (err, codes) {
+    Region.find({}, function (err, regions) {
       if (err) {
         console.log(err);
         res.status(501).send({
           message: `MongoDB Exception: ${err}`,
         });
       } else {
-        console.log(codes);
-        res.json(codes);
+        console.log(regions);
+        res.json(regions);
       }
-    }).sort({ createdAt: -1 });
+    });
   } catch (e) {
     console.log(e);
     res.status(500).send({
@@ -30,33 +30,26 @@ router.get("/codes", async (req, res) => {
   }
 });
 
-// POST code
-router.post("/codes", async (req, res) => {
+// POST region
+router.post("/regions", async (req, res) => {
   try {
-    // The code to be submitted
-    const newCode = {
-      code: req.body.code.replace(/\s/g, ""),
-      date: req.body.date,
-      modified: req.body.date,
+    // The region to be submitted
+    const newRegion = {
       name: req.body.name,
       vivillion: req.body.vivillion,
     };
 
-    await Code.create(newCode, function (err, code) {
+    await Region.create(newRegion, function (err, region) {
       if (err) {
         console.log(err);
-
         res.status(501).send({
-          message: `Duplicate code, codes will refresh every 24 hours`,
+          message: `MongoDB Exception: ${err}`,
         });
       } else {
-        console.log(code);
-        res.json(code);
+        console.log(region);
+        res.json(region);
         console.log(
-          "A new code has been added! They're code is " +
-            req.body.code +
-            ", it was submitted at " +
-            req.body.date
+          "A new region has been added! They're region is " + req.body.name
         );
       }
     });
