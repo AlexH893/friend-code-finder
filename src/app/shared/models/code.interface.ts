@@ -8,6 +8,8 @@
 export interface Code {
   code: string;
   modified: Date;
+  createdAt: Date;
+  formattedCreatedAt: string;
   name: string;
   vivillion: string;
 }

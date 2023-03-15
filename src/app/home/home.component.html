@@ -19,10 +19,11 @@
   </p>
 
   <br />
-  <img id="one" src="../../assets/one.png" tooltip="first" alt="first step"/>
+  <img id="one" src="../../assets/one.png" tooltip="first" alt="first step" />
   <mat-form-field [formGroup]="codeForm">
     <mat-label>Friend Code</mat-label>
     <input
+      tabindex="1"
       matInput
       type="text"
       code-mask
@@ -40,7 +41,7 @@
 
   <br />
   <div class="tooltip">
-    <img id="two" src="../../assets/two.png" alt="second step"/>
+    <img id="two" src="../../assets/two.png" alt="second step" />
     <span class="tooltiptext"
       >Find your region by clicking your Vivillion medal in game</span
     >
@@ -50,6 +51,7 @@
   <mat-form-field a>
     <mat-label>Region</mat-label>
     <input
+      tabindex="2"
       type="text"
       aria-label="Region"
       matInput
@@ -70,10 +72,15 @@
   </mat-form-field>
   <br />
 
-  <img id="three" src="../../assets/three.png" alt="step 3"/>
+  <img id="three" src="../../assets/three.png" alt="step 3" />
 
   <!-- Submit button -->
-  <button (click)="submitCode()" [disabled]="codeForm.invalid" id="submitBtn">
+  <button
+    (click)="submitCode()"
+    [disabled]="codeForm.invalid"
+    id="submitBtn"
+    tabindex="3"
+  >
     Submit
   </button>
   <br />
@@ -81,9 +88,21 @@
   <!-- Vivillion Filter -->
   <mat-form-field id="vivFilter">
     <mat-label id="filterTxt">Vivillion pattern search e.g. 'Modern'</mat-label>
-    <input matInput (keyup)="applyFilter($event)" #input [(ngModel)]="filterValue" [formControl]="filterForm"/>
-    <button class="clearBtn" *ngIf="filterValue" matSuffix aria-label="Clear" (click)="clearFilter()">
-      <img id="close" src="../../assets/close.png" alt="close filter"/>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      #input
+      [(ngModel)]="filterValue"
+      [formControl]="filterForm"
+    />
+    <button
+      class="clearBtn"
+      *ngIf="filterValue"
+      matSuffix
+      aria-label="Clear"
+      (click)="clearFilter()"
+    >
+      <img id="close" src="../../assets/close.png" alt="close filter" />
     </button>
   </mat-form-field>
 </div>
@@ -106,13 +125,18 @@
       value="code"
       id="codeCell"
       class="code"
-      style="cursor: pointer"
-      [cdkCopyToClipboard]="code.code"
-      (click)="
-        showSnackbar('Friend code copied to clipboard', 'Dismiss', '1000')
-      "
+      style="cursor: auto"
     >
-      <a class="codeTxt" id="code">{{ code.code }}</a>
+      <a
+        style="cursor: pointer"
+        [cdkCopyToClipboard]="code.code"
+        (click)="
+          showSnackbar('Friend code copied to clipboard', 'Dismiss', '1000')
+        "
+        class="codeTxt"
+        id="code"
+        >{{ code.code }}</a
+      >
       <!--QR Code markup-->
       <qrcode
         class="qr"
@@ -124,10 +148,10 @@
       </qrcode>
 
       &nbsp;
-      <div id="details">
-      <a class="region">{{ code.name }}</a
-      ><a class="date">{{ code.createdAt }}</a>
-    </div>
+      <div id="details" style="cursor: auto">
+        <a class="region">{{ code.name }}</a
+        ><a class="date">{{ code.createdAt }}</a>
+      </div>
     </td>
   </ng-container>
 
@@ -141,38 +165,13 @@
 ></mat-paginator>
 
 <div class="seoTxt">
-  Pogocodes is the best online tool for finding PokemonGO friends to trade gifts
-  and pokemon with and to challege the raid battles. You can quickly join the
-  website and allow it to access your location to instantly get a list of nearby
-  available trainers! Back in June 2018 Niantic added a feature to PokemonGO
-  that allows trainers to become friends on the app and enjoy a variety of
-  bonuses and challenges. Pogocodes was created so trainers will be able to
-  easily find each other - whether you're searching for trainers that live right
-  next to you or someone from the other side of the world! Why should I have
-  friends on PokemonGO? Gifts - Each trainer obtains gifts from spinning
-  poke-stops and gyms. Sending gifts to your friends grants them free items and
-  increase your friendship level - which in turn increases many bonuses and
-  reduces stardust amounts for trades! Giving and recieving gifts is one of the
-  best features of PokemonGO. Trades - Once you're within 100 meters (~300 feet)
-  of one of your friends you can trade pokemon with them. Help them expand their
-  pokedex while you expand yours! But that's not all - trading pokemon has a
-  chance of making the traded pokemon "lucky" - which yields even more bonuses
-  later on. Raids - Want to catch those legendary pokemon with 50k+ CP? You are
-  probably going to need some help with that! Team up with other trainers and
-  challenge the raid battles to achieve unique and rare pokemon. Make sure to
-  trade lot's of gifts so your attack bonus grows! Battles - Challenge your
-  friends for a battle! You can win prizes if you win and make progress on your
-  battle medals! Training with your friends and choosing the right Battle Party
-  will improve your chances in the GO Battle League! How do I become friends
-  with someone on PokemonGO? Easy! Copy any trainer code shown on this website
-  by clicking on it. In PokemonGo tap the Avatar icon on the bottom left side of
-  the screen then tap "Friends" on the top right. Once there, tap the "Add
-  Friend" button and paste the trainer code in the input field. Click "Send" to
-  finish. What's now? Your friend request has been sent to the user. Once they
-  approve it you'll get a notification saying you are now friends with that
-  user. If you're logged-in to PokemonGO on another device it's even easier -
-  tap "QR CODE" on your "add friend" screen and scan the code of the trainer you
-  want to add. That's it - a friend request will be sent immediately! To learn
-  more about the Friendship Levels in PokemonGO and their bonuses click here.
-  Happy trading!
+  Looking for a way to share your Pokemon Go friend code with other players and
+  receive gifts from all over the world? Look no further! Our platform lets
+  users easily submit their Pokemon Go friend code and Vivillion region,
+  allowing other players to find and add them to their friends list. With our
+  easy-to-use interface and simple submission process, finding other players
+  Pokemon Go friend codes has never been easier. Whether you're looking to
+  expand your Vivillion collection or simply want to add & raid with new players
+  from around the globe, our web app is the perfect solution. Join now and start
+  sharing your Pokemon Go codes and Vivillion region!
 </div>

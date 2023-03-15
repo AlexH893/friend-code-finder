@@ -70,8 +70,8 @@ p.blurb {
 
 .region {
   font-weight: bold;
-  border: 2px solid rgb(90, 141, 95);
-  box-sizing: border-box;
+  border-bottom: solid;
+  border-bottom-style: groove;
 }
 
 .mat-cell:hover {
@@ -269,11 +269,11 @@ input:checked + .slider:before {
 }
 
 .switchLabel {
-margin-left: -8.5em;
+  margin-left: -8.5em;
 }
 
 .qr {
-display: none;
+  display: none;
 }
 
 // The clear filter 'button' that users press

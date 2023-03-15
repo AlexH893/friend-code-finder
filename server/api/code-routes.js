@@ -7,6 +7,7 @@
 var express = require("express");
 const router = express.Router();
 const Code = require("../models/code.js");
+const moment = require("moment");
 
 // GET all codes
 router.get("/codes", async (req, res) => {
@@ -19,6 +20,9 @@ router.get("/codes", async (req, res) => {
         });
       } else {
         console.log(codes);
+        codes.forEach(function (code) {
+          console.log(code.createdAt);
+        });
         res.json(codes);
       }
     }).sort({ createdAt: -1 });
