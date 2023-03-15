@@ -41,6 +41,7 @@
     "http-errors": "^2.0.0",
     "jasmine": "^4.0.2",
     "moment": "^2.29.1",
+    "moment-timezone": "^0.5.41",
     "mongoose": "^6.0.13",
     "morgan": "^1.10.0",
     "ngx-moment": "^5.0.0",

@@ -8,6 +8,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { map, startWith } from 'rxjs/operators';
 import { RegionsService } from '../../services/regions.service';
+const moment = require('moment');
+import 'moment-timezone';
+
 import {
   FormBuilder,
   FormGroup,
@@ -34,6 +37,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   filterForm = new FormControl();
   name: string;
   toggled: boolean = false;
+  //timeFromNow: string;
 
   filterValue = '';
 
@@ -59,7 +63,18 @@ export class HomeComponent implements OnInit, OnDestroy {
       .get('http://localhost:3000/api/codes') //prod - '/api/codes'
       .subscribe((res: Code[]) => {
         this.codes.data = res;
-        //console.log(this.codes.data);
+        console.log(this.codes.data);
+        const userTimezone = moment.tz.guess();
+        const serverTimezone = 'America/Denver'; // Replace with your server's timezone
+        this.codes.data.forEach((code: Code) => {
+          const createdAtMoment = moment(code.createdAt)
+            .utcOffset(serverTimezone) // Apply the server timezone offset to the createdAtMoment
+            .tz(userTimezone); // Apply the user timezone to the createdAtMoment
+          const formattedCreatedAt = createdAtMoment.fromNow();
+          code.createdAt = formattedCreatedAt;
+          console.log(formattedCreatedAt);
+          console.log(moment.tz.guess(true));
+        });
       });
   }
 
@@ -127,16 +142,15 @@ export class HomeComponent implements OnInit, OnDestroy {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.codes.filter = filterValue.trim().toLowerCase();
-    console.log("Filter applied")
+    console.log('Filter applied');
   }
 
   clearFilter() {
-    console.log("clearing filter");
+    console.log('clearing filter');
     this.codes.filter = '';
     this.filterValue = '';
-    this.toggleQr(this.toggled =!this.toggled);
+    this.toggleQr((this.toggled = !this.toggled));
   }
-
 
   // Submitting the form
   submitCode() {

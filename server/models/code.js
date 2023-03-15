@@ -10,14 +10,13 @@ const moment = require("moment");
 
 var createdAt = function () {
   var d = new Date();
-  var formattedDate = moment(d).format("MM-DD-YYYY, h:mm:ss a");
-  return formattedDate;
+  return d;
 };
 
 let codeSchema = new Schema(
   {
     code: { type: String },
-    createdAt: { type: String, default: createdAt },
+    createdAt: { type: Date, default: createdAt },
     modified: { type: Date, default: createdAt },
     name: { type: String },
     vivillion: { type: String },
