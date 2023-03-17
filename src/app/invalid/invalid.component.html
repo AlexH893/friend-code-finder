@@ -1,0 +1,23 @@
+<div class="confirm-container">
+  <h1 mat-dialog-title>Report invalid code?</h1>
+  <div mat-dialog-content> {{ message }}</div>
+  <div id="modalCode">{{ code }}</div>
+  <div mat-dialog-actions style="float: right; margin: 20px">
+    <button
+      id="btnConfirm"
+      mat-button
+      (click)="flagCode(code, _id)"
+      [mat-dialog-close]="{ clicked: 'Ok' }"
+    >
+      Ok
+    </button>
+    &nbsp; &nbsp;
+    <button
+      id="btnCancel"
+      mat-button
+      [mat-dialog-close]="{ clicked: 'Cancel' }"
+    >
+      Cancel
+    </button>
+  </div>
+</div>

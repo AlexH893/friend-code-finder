@@ -15,11 +15,13 @@ var createdAt = function () {
 
 let codeSchema = new Schema(
   {
+    //_id: mongoose.Schema.Types.ObjectId, // Default _id field
     code: { type: String },
     createdAt: { type: Date, default: createdAt },
     modified: { type: Date, default: createdAt },
     name: { type: String },
     vivillion: { type: String },
+    flagged: { type: Number, default: 0 },
     /* shows current day but no time default: d.toDateString()
      default: d.toString() displays full date and time with timezone  */
   },

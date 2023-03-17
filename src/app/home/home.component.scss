@@ -21,11 +21,17 @@ h1 {
   }
 }
 
+// The txt for code date
 a.date {
   font-size: 0.7em;
-  margin-left: 20px;
+  //margin-left: 4em;
+  float: right;
+  @media (max-width: 300px) {
+    display: none;
+  }
 }
 
+// The txt for the instructions under h1
 p.blurb {
   width: 30vw;
   margin: 0 auto;
@@ -39,6 +45,7 @@ p.blurb {
   }
 }
 
+// Submit button
 #submitBtn {
   cursor: pointer;
   color: currentColor;
@@ -58,31 +65,33 @@ p.blurb {
   }
 }
 
-@media (max-width: 1062px) {
-  .input__label {
-    visibility: hidden;
-  }
-}
-
 .countries {
   margin-top: 1em;
 }
 
+// Txt for region
 .region {
   font-weight: bold;
-  border-bottom: solid;
-  border-bottom-style: groove;
+
+  float: left;
+
+  @media (max-width: 255px) {
+    margin-left: 2px;
+  }
 }
 
+// Hover over table cell
 .mat-cell:hover {
   color: #89aa8b;
 }
 
+// Position of Viv filter
 #vivFilter {
   margin-left: 2em;
   margin-bottom: -0.5em;
 }
 
+// Circle 1
 #one {
   width: 20px;
   height: 20px;
@@ -93,11 +102,13 @@ p.blurb {
     opacity: 90%;
   }
 }
+
+// Circle 2
 #two {
   width: 20px;
   height: 20px;
-  padding-right: 1.05em;
-  margin-bottom: 1.5em;
+  //padding-right: 1.05em;
+  //margin-bottom: 1.5em;
   opacity: 30%;
   &:hover {
     opacity: 90%;
@@ -105,6 +116,7 @@ p.blurb {
   }
 }
 
+// Circle 3
 #three {
   width: 20px;
   height: 20px;
@@ -116,33 +128,49 @@ p.blurb {
   }
 }
 
+// Txt of code
 .codeTxt {
   font-size: 1.2em;
-}
-
-// phones
-@media screen and (max-width: 375px) {
-  a.date {
-    font-size: 0.6em;
-    display: block;
+  float: left;
+  margin-left: 1em;
+  margin-top: 0.1em;
+  cursor: pointer;
+  @media (max-width: 505px) {
+    float: left;
+    margin-left: -1em;
+  }
+  @media (max-width: 375px) {
+    float: left;
   }
 }
 
-// tablets
-
-@media screen and (min-width: 850px) {
-  .codeTxt {
-    font-size: 1.5em;
-  }
-  a.date {
-    font-size: 1em;
-  }
-}
-
+// Txt for SEO bottom of page
 .seoTxt {
   text-align: center;
   width: 50%;
   margin: auto;
+  margin-top: 5vh;
+  @media (max-width: 850px) {
+    width: 50%;
+  }
+  @media (max-width: 750px) {
+    width: 60%;
+  }
+  @media (max-width: 650px) {
+    width: 70%;
+  }
+  @media (max-width: 550px) {
+    width: 75%;
+  }
+  @media (max-width: 500px) {
+    width: 80%;
+  }
+  @media (max-width: 400px) {
+    width: 85%;
+  }
+  @media (max-width: 375px) {
+    width: 90%;
+  }
 }
 
 tr.mat-row,
@@ -201,17 +229,39 @@ tr.mat-footer-row {
   font-size: 0.8em;
 }
 
+#toCopy {
+  white-space: nowrap;
+  @media (max-width: 375px) {
+    width: 45px;
+    float: left;
+  }
+  @media (max-width: 375px) {
+    width: 15px;
+    float: left;
+  }
+  @media (max-width: 250px) {
+    display: none;
+  }
+}
+
 /* SLIDER TOGGLE
 */
 
 .switch {
   position: relative;
-  display: inline-block;
-  margin-left: 16em;
+  //display: inline-block;
+  float: right;
+  //margin-left: 16em;
   width: 30px;
   height: 17px;
+
   @media (max-width: 768px) {
     margin-left: 9.5em;
+  }
+  @media (max-width: 375px) {
+    width: 45px;
+    height: 32px;
+    float: right;
   }
 }
 
@@ -231,6 +281,9 @@ tr.mat-footer-row {
   background-color: #ccc;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  @media (max-width: 375px) {
+    position: absolute;
+  }
 }
 
 .slider:before {
@@ -243,6 +296,14 @@ tr.mat-footer-row {
   background-color: white;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  @media (max-width: 375px) {
+    position: absolute;
+    content: "";
+    height: 29px;
+    width: 29px;
+    left: 2px;
+    bottom: 2px;
+  }
 }
 
 input:checked + .slider {
@@ -270,6 +331,9 @@ input:checked + .slider:before {
 
 .switchLabel {
   margin-left: -8.5em;
+  @media (max-width: 325px) {
+    display: none;
+  }
 }
 
 .qr {
@@ -291,4 +355,53 @@ input:checked + .slider:before {
 
 #details {
   display: inline-block;
+}
+
+#invalid {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  opacity: 40%;
+  @media (min-width: 850px) {
+    opacity: 20%;
+  }
+}
+#invalid:hover {
+  opacity: 60%;
+  transition: opacity 0.2s ease-in-out;
+}
+
+// The table cell
+#codeCell {
+  height: 7vh;
+  @media (max-width: 375px) {
+  }
+}
+
+.mat-table {
+  width: 45%;
+  @media (max-width: 850px) {
+    width: 50%;
+  }
+  @media (max-width: 800px) {
+    width: 50%;
+  }
+  @media (max-width: 750px) {
+    width: 60%;
+  }
+  @media (max-width: 650px) {
+    width: 70%;
+  }
+  @media (max-width: 550px) {
+    width: 75%;
+  }
+  @media (max-width: 500px) {
+    width: 80%;
+  }
+  @media (max-width: 400px) {
+    width: 85%;
+  }
+  @media (max-width: 375px) {
+    width: 90%;
+  }
 }
