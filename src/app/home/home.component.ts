@@ -17,6 +17,8 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { InvalidComponent } from '../invalid/invalid.component';
 
 // https://pokemongohub.net/post/guide/vivillon-guide/
 
@@ -54,7 +56,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     private http: HttpClient,
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
-    private regionsSv: RegionsService
+    private regionsSv: RegionsService,
+    private dialog: MatDialog
   ) {}
 
   // GET codes api
@@ -72,7 +75,6 @@ export class HomeComponent implements OnInit, OnDestroy {
             .tz(userTimezone); // Apply the user timezone to the createdAtMoment
           const formattedCreatedAt = createdAtMoment.fromNow();
           code.createdAt = formattedCreatedAt;
-          console.log(formattedCreatedAt);
           console.log(moment.tz.guess(true));
         });
       });
@@ -201,7 +203,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       for (const e of elements) {
         e.style.cssText = 'display:inline;padding-bottom: 3em;'; // cssText allows multiple JS css styles
         for (const c of codes) {
-          c.style.cssText = 'font-size:.8em;';
+          c.style.cssText = 'display:none;';
           for (const d of createdAtDates) {
             d.style.cssText = 'margin-bottom:2em;';
           }
@@ -212,18 +214,41 @@ export class HomeComponent implements OnInit, OnDestroy {
       const elements = document.querySelectorAll<HTMLElement>('.qr');
       const codes = document.querySelectorAll<HTMLElement>('#code');
       const createdAtDates = document.querySelectorAll<HTMLElement>('#details');
+      const details = document.querySelectorAll<HTMLElement>('#details');
 
       // Hiding Qr codes
       for (const e of elements) {
         e.style.display = 'none';
         for (const c of codes) {
-          c.style.cssText = 'font-size:1.2em;';
+          c.style.cssText =
+            'font-size: 1.2em;float: left;margin-left: 1em;margin-top: 0.1em;';
           for (const d of createdAtDates) {
             d.style.cssText = 'display:inline;';
+          }
+          for (const r of details) {
+            r.style.cssText = 'display: inline-block;';
           }
         }
       }
       console.log('Hiding QR codes');
     }
+  }
+
+  report(code: string, _id: Object) {
+    const nonBreakingSpace = `\n`;
+
+    const ref: MatDialogRef<InvalidComponent> = this.dialog.open(
+      InvalidComponent,
+      {
+        data: {
+          message: 'Codes flagged by multiple users will be removed',
+          code: code,
+          _id: _id,
+        },
+        panelClass: 'modalbox',
+        //backdropClass: 'confirmDialogComponent',
+        hasBackdrop: true,
+      }
+    );
   }
 }

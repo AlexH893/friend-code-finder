@@ -1,0 +1,103 @@
+h1 {
+  @media (max-width: 750px) {
+    font-size: 1.7em;
+  }
+  @media only screen and (max-width: 329px) {
+    font-size: 1.3em;
+  }
+}
+
+// Confirm button
+#btnConfirm {
+  width: 5vw;
+  height: 5vh;
+
+  @media only screen and (max-width: 767px) {
+    width: 20vw;
+    height: 5vh;
+  }
+  // Tablets
+  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 18vw;
+    height: 5vh;
+  }
+  @media only screen and (max-width: 1100px) {
+    width: 18vw;
+    height: 5vh;
+  }
+}
+
+// Cancel button
+#btnCancel {
+  width: 5vw;
+  height: 5vh;
+
+  @media only screen and (max-width: 767px) {
+    width: 18vw;
+    height: 5vh;
+  }
+  // Tablets
+  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 18vw;
+    height: 5vh;
+  }
+  @media only screen and (max-width: 1100px) {
+    width: 18vw;
+    height: 5vh;
+  }
+}
+
+// Text in modal container
+.mat-dialog-content {
+  @media (max-width: 1150px) {
+    font-size: 0.8em;
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1100px) {
+    font-size: 1.2em;
+  }
+
+  @media only screen and (max-width: 767px) {
+    font-size: 1.2em;
+  }
+  @media only screen and (min-width: 515px) {
+    font-size: 1em;
+  }
+}
+
+// Modal container
+::ng-deep div#cdk-overlay-0.cdk-overlay-pane.modalbox {
+  width: 30%;
+  @media only screen and (max-width: 1100px) {
+    width: 80%;
+    height: 25%;
+  }
+  @media only screen and (max-width: 767px) {
+    width: 80%;
+    height: 25%;
+  }
+  @media only screen and (max-width: 515px) {
+    width: 80%;
+    height: 30%;
+  }
+  @media only screen and (max-width: 362px) {
+    width: 80%;
+    height: 30%;
+  }
+  @media only screen and (max-width: 328px) {
+    width: 80%;
+    height: 35%;
+  }
+  @media only screen and (max-width: 231px) {
+    width: 80%;
+    height: 40%;
+  }
+  // Tablets
+  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 50%;
+  }
+}
+
+// Color of the code in the modal to be flagged
+#modalCode {
+  color: rgb(216, 88, 24);
+}

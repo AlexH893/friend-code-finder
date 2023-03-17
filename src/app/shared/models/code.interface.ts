@@ -12,4 +12,5 @@ export interface Code {
   formattedCreatedAt: string;
   name: string;
   vivillion: string;
+  flagged: Number;
 }

@@ -110,14 +110,15 @@
 <!-- Code Column -->
 <table mat-table [dataSource]="codes" class="mat-elevation-z8 center2">
   <ng-container matColumnDef="code">
-    <th mat-header-cell *matHeaderCellDef class="th">
+    <th mat-header-cell *matHeaderCellDef class="th" style="  white-space: nowrap;
+    ">
       Recently submitted friend codes
       <label class="switch">
         <label class="switchLabel">Toggle QR Codes</label>
         <input type="checkbox" (click)="toggleQr(toggled)" />
         <span class="slider round"></span> </label
       ><br />
-      <span style="font-size: 0.7em">Click/tap a code to copy</span>
+      <span style="font-size: 0.7em" id="toCopy">Click/tap a code to copy</span>
     </th>
     <td
       mat-cell
@@ -151,6 +152,8 @@
       <div id="details" style="cursor: auto">
         <a class="region">{{ code.name }}</a
         ><a class="date">{{ code.createdAt }}</a>
+        <img id="invalid" src="../../assets/invalid.png" alt="report invalid code" (click)="report(code.code, code._id);"/>
+
       </div>
     </td>
   </ng-container>
@@ -171,7 +174,7 @@
   allowing other players to find and add them to their friends list. With our
   easy-to-use interface and simple submission process, finding other players
   Pokemon Go friend codes has never been easier. Whether you're looking to
-  expand your Vivillion collection or simply want to add & raid with new players
+  progress your Vivillion collection or simply want to add & raid with new players
   from around the globe, our web app is the perfect solution. Join now and start
   sharing your Pokemon Go codes and Vivillion region!
 </div>

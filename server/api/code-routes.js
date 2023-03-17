@@ -20,9 +20,6 @@ router.get("/codes", async (req, res) => {
         });
       } else {
         console.log(codes);
-        codes.forEach(function (code) {
-          console.log(code.createdAt);
-        });
         res.json(codes);
       }
     }).sort({ createdAt: -1 });
@@ -44,6 +41,7 @@ router.post("/codes", async (req, res) => {
       modified: req.body.date,
       name: req.body.name,
       vivillion: req.body.vivillion,
+      flagged: req.body.flagged,
     };
 
     await Code.create(newCode, function (err, code) {
@@ -64,6 +62,31 @@ router.post("/codes", async (req, res) => {
         );
       }
     });
+  } catch (e) {
+    console.log(e);
+    res.status(500).send({
+      message: `Server Exception ${e.message}`,
+    });
+  }
+});
+
+// PUT update code, incrementing flagged property
+router.put("/codes/:id", async (req, res) => {
+  try {
+    // Find the code document to be updated
+    const codeToUpdate = await Code.findById(req.params.id);
+
+    if (!codeToUpdate) {
+      return res.status(404).send({ message: "Code not found" });
+    }
+
+    // Update the flagged property to 1
+    codeToUpdate.flagged += 1;
+
+    // Save the updated code document
+    const updatedCode = await codeToUpdate.save();
+
+    res.json(updatedCode);
   } catch (e) {
     console.log(e);
     res.status(500).send({

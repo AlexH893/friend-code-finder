@@ -28,6 +28,7 @@ import {
 } from '@angular/material/dialog';
 import { CodeFormatDirective } from './home/code-format.directive';
 import { RegionsService } from '../services/regions.service';
+import { InvalidComponent } from './invalid/invalid.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { RegionsService } from '../services/regions.service';
     HomeComponent,
     BaseLayoutComponent,
     CodeFormatDirective,
+    InvalidComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,8 @@ import { RegionsService } from '../services/regions.service';
     MatSelectModule,
     MatAutocompleteModule,
     QRCodeModule,
-    FormsModule
+    FormsModule,
+    
   ],
   providers: [RegionsService],
   bootstrap: [AppComponent],
