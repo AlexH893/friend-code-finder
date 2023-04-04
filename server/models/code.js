@@ -22,6 +22,7 @@ let codeSchema = new Schema(
     name: { type: String },
     vivillion: { type: String },
     flagged: { type: Number, default: 0 },
+    ip: { type: String },
     /* shows current day but no time default: d.toDateString()
      default: d.toString() displays full date and time with timezone  */
   },

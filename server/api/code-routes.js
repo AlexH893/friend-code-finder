@@ -42,6 +42,7 @@ router.post("/codes", async (req, res) => {
       name: req.body.name,
       vivillion: req.body.vivillion,
       flagged: req.body.flagged,
+      ip: req.body.ip,
     };
 
     await Code.create(newCode, function (err, code) {

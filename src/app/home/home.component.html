@@ -43,7 +43,7 @@
   <div class="tooltip">
     <img id="two" src="../../assets/two.png" alt="second step" />
     <span class="tooltiptext"
-      >Find your region by clicking your Vivillion medal in game</span
+      >Find your region by tapping your Vivillion medal in game, then tap the magnifying glass</span
     >
   </div>
 
@@ -59,6 +59,7 @@
       [formControl]="regionForm"
       [matAutocomplete]="auto"
       placeholder="Type or choose a region"
+      id="regionInput"
     />
 
     <mat-autocomplete isOpen="true" #auto="matAutocomplete">
@@ -132,7 +133,7 @@
         style="cursor: pointer"
         [cdkCopyToClipboard]="code.code"
         (click)="
-          showSnackbar('Friend code copied to clipboard', 'Dismiss', '1000')
+          copySnackbar('Friend code copied to clipboard', 'Dismiss', '1000')
         "
         class="codeTxt"
         id="code"

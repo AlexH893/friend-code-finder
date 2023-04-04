@@ -8,12 +8,28 @@ h1 {
   text-align: center;
   width: 100%;
 }
+
 .center2 {
   text-align: center;
   margin: auto;
   //width: 25%;
 }
 
+// The txt for the instructions under h1
+p.blurb {
+  width: 30vw;
+  margin: 0 auto;
+  font-size: 1.3em;
+  @media (max-width: 428px) {
+    width: 75vw;
+  }
+  @media (max-width: 768px) {
+    width: 75vw;
+    font-size: 1.2em;
+  }
+}
+
+// Copy friend code
 @media all and (max-width: 30em) {
   a.copyBtn {
     display: block;
@@ -28,20 +44,6 @@ a.date {
   float: right;
   @media (max-width: 300px) {
     display: none;
-  }
-}
-
-// The txt for the instructions under h1
-p.blurb {
-  width: 30vw;
-  margin: 0 auto;
-  font-size: 1.3em;
-  @media (max-width: 428px) {
-    width: 75vw;
-  }
-  @media (max-width: 768px) {
-    width: 75vw;
-    font-size: 1.2em;
   }
 }
 
@@ -72,9 +74,7 @@ p.blurb {
 // Txt for region
 .region {
   font-weight: bold;
-
   float: left;
-
   @media (max-width: 255px) {
     margin-left: 2px;
   }
@@ -95,7 +95,6 @@ p.blurb {
 #one {
   width: 20px;
   height: 20px;
-  padding-right: 1em;
   margin-top: -0.5em;
   opacity: 30%;
   &:hover {
@@ -107,8 +106,6 @@ p.blurb {
 #two {
   width: 20px;
   height: 20px;
-  //padding-right: 1.05em;
-  //margin-bottom: 1.5em;
   opacity: 30%;
   &:hover {
     opacity: 90%;
@@ -120,7 +117,7 @@ p.blurb {
 #three {
   width: 20px;
   height: 20px;
-  padding-right: 1.05em;
+  //padding-right: 1.05em;
   margin-bottom: 1.5em;
   opacity: 30%;
   &:hover {
@@ -178,6 +175,7 @@ tr.mat-footer-row {
   height: 6vh;
 }
 
+// Tooltip for Region field
 .tooltip {
   position: relative;
   display: inline-block;
@@ -207,6 +205,7 @@ tr.mat-footer-row {
   text-decoration: none;
 }
 
+// Tooltip for Region field
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 120px;
@@ -229,6 +228,7 @@ tr.mat-footer-row {
   font-size: 0.8em;
 }
 
+// Code copy instructions
 #toCopy {
   white-space: nowrap;
   @media (max-width: 375px) {
@@ -244,17 +244,12 @@ tr.mat-footer-row {
   }
 }
 
-/* SLIDER TOGGLE
-*/
-
+// Slider toggle
 .switch {
   position: relative;
-  //display: inline-block;
   float: right;
-  //margin-left: 16em;
   width: 30px;
   height: 17px;
-
   @media (max-width: 768px) {
     margin-left: 9.5em;
   }
@@ -336,6 +331,7 @@ input:checked + .slider:before {
   }
 }
 
+// Qr code - not displaying by default
 .qr {
   display: none;
 }
@@ -350,13 +346,14 @@ input:checked + .slider:before {
   height: 2em;
   width: 2em;
   cursor: pointer;
-  //margin-top: 1em;
 }
 
+// The div encompassing region, report btn, time submitted
 #details {
   display: inline-block;
 }
 
+// Report invalid code btn
 #invalid {
   width: 20px;
   height: 20px;
@@ -365,10 +362,10 @@ input:checked + .slider:before {
   @media (min-width: 850px) {
     opacity: 20%;
   }
-}
-#invalid:hover {
-  opacity: 60%;
-  transition: opacity 0.2s ease-in-out;
+  &:hover {
+    opacity: 60%;
+    transition: opacity 0.2s ease-in-out;
+  }
 }
 
 // The table cell
@@ -378,6 +375,7 @@ input:checked + .slider:before {
   }
 }
 
+// The table class
 .mat-table {
   width: 45%;
   @media (max-width: 850px) {
@@ -404,4 +402,8 @@ input:checked + .slider:before {
   @media (max-width: 375px) {
     width: 90%;
   }
+}
+
+.submit-snackbar {
+  background: #2196f3;
 }

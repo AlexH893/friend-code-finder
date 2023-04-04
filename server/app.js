@@ -20,7 +20,7 @@ const mongoose = require("mongoose");
 const createError = require("http-errors");
 const { Router } = require("express");
 let codeRoutes = require("./api/code-routes.js");
-let regionRoutes = require("./api/region-routes.js");
+//let regionRoutes = require("./api/region-routes.js");
 
 /**
  * App configurations

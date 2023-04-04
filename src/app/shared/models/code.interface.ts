@@ -13,4 +13,5 @@ export interface Code {
   name: string;
   vivillion: string;
   flagged: Number;
+  ip: String;
 }

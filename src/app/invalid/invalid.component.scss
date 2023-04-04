@@ -1,3 +1,4 @@
+// Dialog title
 h1 {
   @media (max-width: 750px) {
     font-size: 1.7em;
@@ -66,7 +67,7 @@ h1 {
 
 // Modal container
 ::ng-deep div#cdk-overlay-0.cdk-overlay-pane.modalbox {
-  width: 30%;
+  width: 20%;
   @media only screen and (max-width: 1100px) {
     width: 80%;
     height: 25%;
@@ -100,4 +101,8 @@ h1 {
 // Color of the code in the modal to be flagged
 #modalCode {
   color: rgb(216, 88, 24);
+}
+
+#modalMsg {
+width: 50%;
 }
