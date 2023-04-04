@@ -4,12 +4,13 @@ import { Regions } from '../shared/models/region.interface';
 import { Observable, Subscription } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTable, MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { map, startWith } from 'rxjs/operators';
 import { RegionsService } from '../../services/regions.service';
 const moment = require('moment');
 import 'moment-timezone';
+import { IpService } from '../../ip-service.service';
 
 import {
   FormBuilder,
@@ -28,6 +29,7 @@ import { InvalidComponent } from '../invalid/invalid.component';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
+  public ipAddress: string;
   errorMsg: string;
   data: any;
   error: any;
@@ -46,18 +48,19 @@ export class HomeComponent implements OnInit, OnDestroy {
   codeForm = new FormGroup({
     code: new FormControl(),
   });
-
   @ViewChild(MatPaginator) paginator: MatPaginator;
   codes = new MatTableDataSource<Code>([]);
 
   displayedColumns: string[] = ['code'];
   region: any;
+
   constructor(
     private http: HttpClient,
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
     private regionsSv: RegionsService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private ipService: IpService
   ) {}
 
   // GET codes api
@@ -83,6 +86,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   // Runs when component is first loaded/initialized
   ngOnInit(): void {
     this.fetchCodes();
+    this.ipService.getIpAddress().subscribe((response) => {
+      this.ipAddress = response.ip;
+      console.log('Connected from ' + this.ipAddress);
+    });
     this.codeForm = this.fb.group({
       code: [
         null,
@@ -133,13 +140,24 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   // Displays the toast when a user copies a code
-  showSnackbar(content, action, duration) {
+  copySnackbar(content, action, duration) {
     this.snackBar.open(content, action, {
       duration: 1000,
       verticalPosition: 'top', // Allowed values are  'top' | 'bottom'
       horizontalPosition: 'center', // Allowed values are 'start' | 'center' | 'end' | 'left' | 'right'
     });
   }
+
+    // Displays the toast when a user submits a code successfully
+    submitSnackbar(content, action, duration) {
+      this.snackBar.open(content, action, {
+        duration: 1000,
+        verticalPosition: 'top',
+        horizontalPosition: 'center',
+        panelClass: ['submit-snackbar']
+      });
+    }
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -180,15 +198,17 @@ export class HomeComponent implements OnInit, OnDestroy {
           // this fixed heroku error, change back to /api/codes for prod
           code: codeInput.code,
           name: regionInput,
+          ip: this.ipAddress,
           //vivillion: regionInput.
         })
         .subscribe((response: any) => {
           alert('code success');
+          this.submitSnackbar('Success!', 'Dismiss', '10000');
           console.log('SUCCESS');
           window.location.reload(); // Will update to async pipe later
         });
     } else {
-      alert('Region input invalid');
+      alert('Invalid region');
     }
   }
 
@@ -246,7 +266,6 @@ export class HomeComponent implements OnInit, OnDestroy {
           _id: _id,
         },
         panelClass: 'modalbox',
-        //backdropClass: 'confirmDialogComponent',
         hasBackdrop: true,
       }
     );

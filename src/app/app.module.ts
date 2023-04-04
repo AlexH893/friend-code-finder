@@ -59,7 +59,7 @@ import { InvalidComponent } from './invalid/invalid.component';
     MatAutocompleteModule,
     QRCodeModule,
     FormsModule,
-    
+
   ],
   providers: [RegionsService],
   bootstrap: [AppComponent],
