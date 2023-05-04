@@ -21,8 +21,6 @@ import {
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { InvalidComponent } from '../invalid/invalid.component';
 
-// https://pokemongohub.net/post/guide/vivillon-guide/
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

@@ -1,21 +1,21 @@
 <meta
   name="description"
-  content="Pokemon Go Friend Code finder that lets users submit their own code and add friends by viewing other submitted codes."
+  content="Peridot Friend Code finder that lets users submit their own code and add friends by viewing other submitted codes."
 />
 <meta
   name="google-site-verification"
   content="IWhbL5WUmUDaigfWkyy6EEOSqq-imKCufnZzPOIlGPs"
 />
-<meta name="keywords" content="Pokemon go, pokemon" />
+<meta name="keywords" content="Peridot, peridot" />
 
 <!--
     <button class="navbar-link"><a class="tut" href="https://ibb.co/BsCLdJs" target="blank">Usage Guide</a></button>
   -->
 <div class="center">
-  <div><h1>Pokémon Go Friend Codes</h1></div>
+  <div><h1>Peridot Friend Codes</h1></div>
   <p class="blurb">
-    Submit your code and copy codes to add in Pokémon Go. Codes can be
-    resubmitted every 24hrs. <br />
+    Submit your code and copy codes to add in Peridot. Codes can be resubmitted
+    every 24hrs. <br />
   </p>
 
   <br />
@@ -43,7 +43,8 @@
   <div class="tooltip">
     <img id="two" src="../../assets/two.png" alt="second step" />
     <span class="tooltiptext"
-      >Find your region by tapping your Vivillion medal in game, then tap the magnifying glass</span
+      >Find your region by tapping your Vivillion medal in game, then tap the
+      magnifying glass</span
     >
   </div>
 
@@ -111,8 +112,12 @@
 <!-- Code Column -->
 <table mat-table [dataSource]="codes" class="mat-elevation-z8 center2">
   <ng-container matColumnDef="code">
-    <th mat-header-cell *matHeaderCellDef class="th" style="  white-space: nowrap;
-    ">
+    <th
+      mat-header-cell
+      *matHeaderCellDef
+      class="th"
+      style="white-space: nowrap"
+    >
       Recently submitted friend codes
       <label class="switch">
         <label class="switchLabel">Toggle QR Codes</label>
@@ -153,8 +158,12 @@
       <div id="details" style="cursor: auto">
         <a class="region">{{ code.name }}</a
         ><a class="date">{{ code.createdAt }}</a>
-        <img id="invalid" src="../../assets/invalid.png" alt="report invalid code" (click)="report(code.code, code._id);"/>
-
+        <img
+          id="invalid"
+          src="../../assets/invalid.png"
+          alt="report invalid code"
+          (click)="report(code.code, code._id)"
+        />
       </div>
     </td>
   </ng-container>
@@ -169,13 +178,10 @@
 ></mat-paginator>
 
 <div class="seoTxt">
-  Looking for a way to share your Pokemon Go friend code with other players and
+  Looking for a way to share your Peridot friend code with other players and
   receive gifts from all over the world? Look no further! Our platform lets
-  users easily submit their Pokemon Go friend code and Vivillion region,
-  allowing other players to find and add them to their friends list. With our
-  easy-to-use interface and simple submission process, finding other players
-  Pokemon Go friend codes has never been easier. Whether you're looking to
-  progress your Vivillion collection or simply want to add & raid with new players
-  from around the globe, our web app is the perfect solution. Join now and start
-  sharing your Pokemon Go codes and Vivillion region!
+  users easily submit their Peridot friend code and region, allowing other
+  players to find and add them to their friends list. With our easy-to-use
+  interface and simple submission process, finding other players Peridot friend
+  codes has never been easier. Join now and start sharing your Peridot codes!
 </div>

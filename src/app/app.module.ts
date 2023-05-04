@@ -39,7 +39,7 @@ import { InvalidComponent } from './invalid/invalid.component';
     InvalidComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'my-app' }),
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
@@ -59,7 +59,6 @@ import { InvalidComponent } from './invalid/invalid.component';
     MatAutocompleteModule,
     QRCodeModule,
     FormsModule,
-
   ],
   providers: [RegionsService],
   bootstrap: [AppComponent],
